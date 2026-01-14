@@ -6,6 +6,7 @@ import DraggableSection from "./components/editor/DraggableSection";
 import PageSelector from "./components/editor/PageSelector";
 import { useThemeStore } from "./store/themeStore";
 import { downloadResumePDF } from "./utils/downloadPDF";
+import { FiDownload, FiFileText } from 'react-icons/fi';
 
 export default function App() {
   const { theme } = useThemeStore();
@@ -21,8 +22,9 @@ export default function App() {
       <aside className={`${sidebarOpen ? "block" : "hidden"} lg:block lg:w-[420px] w-full p-6 border-r ${borderColor} overflow-y-auto bg-gradient-to-br ${theme.isDarkMode ? "from-gray-800 to-gray-900" : "from-gray-50 to-white"} shadow-lg lg:shadow-none`}>
         {/* Header */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent mb-2">
-            📝 Resume Builder
+          <h1 className="text-3xl font-bold flex items-center gap-2 mb-2">
+            <FiFileText className="text-blue-600" />
+            <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Resume Builder</span>
           </h1>
           <p className={`text-sm ${theme.isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
             Create and customize your professional resume
@@ -66,7 +68,8 @@ export default function App() {
                   : "bg-green-500 hover:bg-green-600 text-white"
               }`}
             >
-              📥 Download PDF
+              <FiDownload />
+              <span>Download PDF</span>
             </button>
             {window.innerWidth < 768 && (
               <button

@@ -4,13 +4,11 @@
 @import 'tailwindcss/utilities';
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -33,6 +31,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-family: var(--font);
+  background-color: var(--background, #ffffff);
+  color: var(--text, #111827);
 }
 
 h1 {
@@ -40,6 +41,7 @@ h1 {
   line-height: 1.1;
 }
 
+/* Global button defaults */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -47,9 +49,9 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s, background-color 0.15s;
 }
 button:hover {
   border-color: #646cff;
@@ -59,15 +61,78 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* From previous App.css: global utilities */
+* {
+  @apply transition-colors duration-300;
+}
+
+html, body, #root {
+  @apply h-full w-full;
+}
+
+body {
+  @apply text-gray-900 bg-white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* Print styles */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
   }
-  a:hover {
-    color: #747bff;
+
+  #root {
+    display: block;
+    height: auto;
   }
-  button {
-    background-color: #f9f9f9;
+
+  #resume-preview {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .resume {
+    page-break-after: auto;
+  }
+
+  p, h2, h3, h4 {
+    page-break-inside: avoid;
+  }
+}
+
+/* Accessibility focus outline */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-blue-500;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    @apply !transition-none !duration-0;
   }
 }

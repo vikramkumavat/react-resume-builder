@@ -1,18 +1,27 @@
-:root {
-  --primary: #2563eb;
-  --background: #ffffff;
-  --text: #111827;
-  --font: Inter;
-}
+/* PERFECT PDF STYLES */
+      @media print {
+        body {
+          background: #ffffff !important;
+        }
 
-.resume {
-  background: var(--background);
-  color: var(--text);
-  font-family: var(--font);
-  padding: 24px;
-}
+        /* Fix letter spacing in PDF */
+        #resume-preview {
+          letter-spacing: normal !important;
+          word-spacing: normal !important;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+        }
 
-.resume h1,
-.resume h2 {
-  color: var(--primary);
+        .resume {
+          page-break-inside: avoid;
+        }
+      }
+      .pdf-export {
+        box-shadow: none !important;
+        transform: none !important;
+      }
+
+#resume-preview,
+#resume-preview * {
+  box-sizing: border-box;
 }

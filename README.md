@@ -1,16 +1,57 @@
-# React + Vite
+# React Resume Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **React** application built with **Vite** that allows users to create, edit, and preview professional resumes. The project demonstrates a clean component architecture, state management with **Zustand**, and PDF generation.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Live editor** with drag‑and‑drop sections
+- Multiple **theme** options (light/dark)
+- Real‑time **preview** of the resume
+- Export to **PDF** using `html2canvas` and `jsPDF`
+- Responsive design with **Tailwind CSS**
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Clone the repository
+git clone https://github.com/vikramkumavat/react-resume-builder.git
+cd react-resume-builder
 
-## Expanding the ESLint configuration
+# Install dependencies
+npm install
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Run the development server
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the app.
+
+## Project Structure
+
+```
+src/
+├─ components/
+│  ├─ editor/          # Editing UI (drag‑and‑drop, form fields)
+│  ├─ preview/         # Live resume preview component
+│  └─ theme/           # Theme controls
+├─ layouts/            # Layout variations (e.g., ClassicLayout)
+├─ store/              # Zustand stores for resume data and theme
+├─ utils/              # Helper functions (PDF download)
+├─ App.jsx             # Root component
+├─ main.jsx            # Entry point
+└─ index.html          # HTML template
+```
+
+## Scripts
+
+- `npm run dev` – Starts the Vite dev server.
+- `npm run build` – Builds the app for production.
+- `npm run preview` – Serves the production build locally.
+
+## Contributing
+
+Feel free to open issues or submit pull requests. Ensure code follows the existing style and runs `npm run lint` before committing.
+
+## License
+
+This project is open‑source and available under the MIT License.
